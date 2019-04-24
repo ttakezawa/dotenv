@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ ! -r $1 ]]; then
+  echo 1>&2 "could not read '$1'"
+  exit 1
+fi
+
+set -e -o allexport
+source $1
+set +e +o allexport
+shift
+exec "$@"
